@@ -1,0 +1,67 @@
+Index: Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc
+===================================================================
+--- Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc	(revision 157159)
++++ Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc	(working copy)
+@@ -108,8 +108,8 @@
+ FONT 8, "System", 0, 0, 0x0
+ BEGIN
+     ICON            IDI_WINLAUNCHER,IDC_MYICON,14,9,20,20
+-    LTEXT           "WinLauncher Version 1.2",IDC_STATIC,49,10,119,8,SS_NOPREFIX
+-    LTEXT           "Copyright (C) 2009",IDC_STATIC,49,20,119,8
++    LTEXT           "Wink Version 1.0.1",IDC_STATIC,49,10,119,8,SS_NOPREFIX
++    LTEXT           "Copyright (C) 2013",IDC_STATIC,49,20,119,8
+     DEFPUSHBUTTON   "OK",IDOK,195,6,30,11,WS_GROUP
+ END
+ 
+@@ -149,8 +149,8 @@
+ 
+ STRINGTABLE 
+ BEGIN
+-    IDS_APP_TITLE           "WinLauncher"
+-    IDC_WINLAUNCHER         "WINLAUNCHER"
++    IDS_APP_TITLE           "Wink"
++    IDC_WINLAUNCHER         "WINK"
+ END
+ 
+ #endif    // English (U.S.) resources
+Index: Tools/WinLauncher/WinLauncherReplace.h
+===================================================================
+--- Tools/WinLauncher/WinLauncherReplace.h	(revision 157159)
++++ Tools/WinLauncher/WinLauncherReplace.h	(working copy)
+@@ -1,29 +1,53 @@
+-/*
+- * Copyright (C) 2013 Alex Christensen. All rights reserved.
+- * 
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1.  Redistributions of source code must retain the above copyright
+- *     notice, this list of conditions and the following disclaimer.
+- * 2.  Redistributions in binary form must reproduce the above copyright
+- *     notice, this list of conditions and the following disclaimer in the
+- *     documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY
+- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+- * DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY
+- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+- * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+- */
++#include <WinInet.h>
+ 
+-// This file is to make it easier for users to manage changes to the internals of WinLauncher
++const wchar_t* defaultHTML = L"<div style=\"position:absolute;top:50%;left:50%;font-size:50;margin-top:-.5em\">;&nbsp;)<div>";
+ 
+-const wchar_t* defaultHTML = L"<p style=\"background-color: #00FF00\">Testing</p><img id=\"webkit logo\" src=\"http://webkit.org/images/icon-gold.png\" alt=\"Face\"><div style=\"border: solid blue; background: white;\" contenteditable=\"true\">div with blue border</div><ul><li>foo<li>bar<li>baz</ul>";
++void processCrashReport(const wchar_t* fileName)
++{
++	if (IDYES != ::MessageBoxW(0, L"We've crashed.  Could we upload a crash report to winkbrowser.org?  No personal or browsing information will be sent.  We just want to know where the program crashed so we know what to fix.", L"Upload Crash Report", MB_YESNO))
++		return;
+ 
+-void processCrashReport(const wchar_t* fileName) { ::MessageBox(0, fileName, L"Crash Report", MB_OK); }
++void processCrashReport(const wchar_t* fileName) { ::MessageBox(0, fileName, L"Crash Report", MB_OK); } // This change intentionally not included.  Please don't upload crash reports from other builds of Wink.

@@ -1,0 +1,331 @@
+Index: Source/ThirdParty/ANGLE/ANGLE.vcxproj/libEGLCommon.props
+===================================================================
+--- Source/ThirdParty/ANGLE/ANGLE.vcxproj/libEGLCommon.props	(revision 157054)
++++ Source/ThirdParty/ANGLE/ANGLE.vcxproj/libEGLCommon.props	(working copy)
+@@ -12,6 +12,7 @@
+       <AdditionalDependencies>d3d9.lib;libGLESv2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>$(CONFIGURATIONBUILDDIR)\lib$(PlatformArchitecture)</AdditionalLibraryDirectories>
+       <ModuleDefinitionFile>../src/libEGL/libEGL.def</ModuleDefinitionFile>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
+     </Link>
+   </ItemDefinitionGroup>
+   <ItemGroup />
+Index: Source/ThirdParty/ANGLE/ANGLE.vcxproj/libGLESv2Common.props
+===================================================================
+--- Source/ThirdParty/ANGLE/ANGLE.vcxproj/libGLESv2Common.props	(revision 157054)
++++ Source/ThirdParty/ANGLE/ANGLE.vcxproj/libGLESv2Common.props	(working copy)
+@@ -11,6 +11,7 @@
+       <ModuleDefinitionFile>../src/libGLESv2/libGLESv2.def</ModuleDefinitionFile>
+       <AdditionalDependencies>d3d9.lib;dxguid.lib;translator_common.lib;translator_hlsl.lib;preprocessor.lib;%(AdditionalDependencies)</AdditionalDependencies>
+       <AdditionalLibraryDirectories>$(CONFIGURATIONBUILDDIR)\lib$(PlatformArchitecture)</AdditionalLibraryDirectories>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
+     </Link>
+   </ItemDefinitionGroup>
+   <ItemGroup />
+Index: Source/WebCore/WebCore.vcxproj/WebCore.vcxproj
+===================================================================
+--- Source/WebCore/WebCore.vcxproj/WebCore.vcxproj	(revision 157054)
++++ Source/WebCore/WebCore.vcxproj/WebCore.vcxproj	(working copy)
+@@ -7565,7 +7565,6 @@
+     <ClCompile Include="..\platform\graphics\win\IntSizeWin.cpp" />
+     <ClCompile Include="..\platform\graphics\win\MediaPlayerPrivateFullscreenWindow.cpp">
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_WinCairo|x64'">true</ExcludedFromBuild>
+-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+     </ClCompile>
+     <ClCompile Include="..\platform\graphics\win\MediaPlayerPrivateQuickTimeVisualContext.cpp">
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_WinCairo|Win32'">true</ExcludedFromBuild>
+@@ -9841,7 +9840,6 @@
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_WinCairo|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='DebugSuffix|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Production|x64'">true</ExcludedFromBuild>
+     </ClCompile>
+     <ClCompile Include="..\rendering\RenderLineBoxList.cpp">
+@@ -12915,9 +12913,9 @@
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|Win32'">true</ExcludedFromBuild>
+-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Production|Win32'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Production|x64'">true</ExcludedFromBuild>
++      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+     </ClCompile>
+     <ClCompile Include="..\dom\RangeException.cpp">
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+@@ -15914,9 +15912,9 @@
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|Win32'">true</ExcludedFromBuild>
+-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Production|Win32'">true</ExcludedFromBuild>
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Production|x64'">true</ExcludedFromBuild>
++      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">true</ExcludedFromBuild>
+     </ClCompile>
+     <ClCompile Include="..\bindings\js\JSDOMWindowCustom.cpp">
+       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+@@ -20900,4 +20898,4 @@
+   <ImportGroup Label="ExtensionTargets">
+     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+   </ImportGroup>
+-</Project>
++</Project>
+\ No newline at end of file
+Index: Source/WebCore/WebCore.vcxproj/WebCore.vcxproj.filters
+===================================================================
+--- Source/WebCore/WebCore.vcxproj/WebCore.vcxproj.filters	(revision 157054)
++++ Source/WebCore/WebCore.vcxproj/WebCore.vcxproj.filters	(working copy)
+@@ -6919,6 +6919,7 @@
+     <ClCompile Include="..\Modules\mediacontrols\MediaControlsHost.cpp">
+       <Filter>Modules\mediacontrols</Filter>
+     </ClCompile>
++    <ClCompile Include="..\rendering\TextPaintStyle.cpp" />
+   </ItemGroup>
+   <ItemGroup>
+     <ClInclude Include="..\Modules\geolocation\Coordinates.h">
+@@ -14535,6 +14536,7 @@
+       <Filter>DerivedSources</Filter>
+     </ClInclude>
+     <ClInclude Include="$(ConfigurationBuildDir)\obj$(PlatformArchitecture)\$(ProjectName)\DerivedSources\UserAgentScripts.h" />
++    <ClInclude Include="..\rendering\TextPaintStyle.h" />
+   </ItemGroup>
+   <ItemGroup>
+     <None Include="..\css\CSSGrammar.y.in">
+@@ -15510,4 +15512,4 @@
+       <Filter>platform\win</Filter>
+     </MASM>
+   </ItemGroup>
+-</Project>
++</Project>
+\ No newline at end of file
+Index: Source/WebCore/platform/network/curl/ResourceHandleManager.cpp
+===================================================================
+--- Source/WebCore/platform/network/curl/ResourceHandleManager.cpp	(revision 157054)
++++ Source/WebCore/platform/network/curl/ResourceHandleManager.cpp	(working copy)
+@@ -8,6 +8,7 @@
+  * Copyright (C) 2009 Appcelerator Inc.
+  * Copyright (C) 2009 Brent Fulgham <bfulgham@webkit.org>
+  * Copyright (C) 2013 Peter Gal <galpeter@inf.u-szeged.hu>, University of Szeged
++ * Copyright (C) 2013 Alex Christensen
+  * All rights reserved.
+  *
+  * Redistribution and use in source and binary forms, with or without
+@@ -45,7 +46,12 @@
+ #include "ResourceHandle.h"
+ #include "ResourceHandleInternal.h"
+ #if OS(WINDOWS)
++#include <shlobj.h>
++#include <shlwapi.h>
+ #include "WebCoreBundleWin.h"
++#else
++#include <sys/param.h>
++#define MAX_PATH MAXPATHLEN
+ #endif
+ 
+ #include <errno.h>
+@@ -57,10 +63,6 @@
+ #include <wtf/Vector.h>
+ #include <wtf/text/CString.h>
+ 
+-#if !OS(WINDOWS)
+-#include <sys/param.h>
+-#define MAX_PATH MAXPATHLEN
+-#endif
+ 
+ namespace WebCore {
+ 
+@@ -95,8 +97,28 @@
+     char* cookieJarPath = getenv("CURL_COOKIE_JAR_PATH");
+     if (cookieJarPath)
+         return fastStrDup(cookieJarPath);
++#if OS(WINDOWS)
++    char executablePath[MAX_PATH];
++    char appDataDirectory[MAX_PATH];
++    char cookieJarFullPath[MAX_PATH];
++    char cookieJarDirectory[MAX_PATH];
++    if (FAILED(::SHGetFolderPathA(0, CSIDL_LOCAL_APPDATA | CSIDL_FLAG_CREATE, 0, 0, appDataDirectory)) ||
++        FAILED(::GetModuleFileNameA( NULL, executablePath, MAX_PATH)))
++        return fastStrDup("cookies.dat");
++    ::PathRemoveExtensionA(executablePath);
++    LPSTR executableName = ::PathFindFileNameA(executablePath);
++    sprintf(cookieJarDirectory, "%s/%s", appDataDirectory, executableName);
++    sprintf(cookieJarFullPath, "%s/cookies.dat", cookieJarDirectory);
+ 
++    if (::SHCreateDirectoryExA(0, cookieJarDirectory, 0) != ERROR_SUCCESS
++        && ::GetLastError() != ERROR_FILE_EXISTS
++        && ::GetLastError() != ERROR_ALREADY_EXISTS)
++        return fastStrDup("cookies.dat");
++
++    return fastStrDup(cookieJarFullPath);
++#else
+     return fastStrDup("cookies.dat");
++#endif
+ }
+ 
+ static Mutex* sharedResourceMutex(curl_lock_data data) {
+Index: Source/WebKit/WebKit.vcxproj/WebKitExportGenerator/WebKitExports.def.in
+===================================================================
+--- Source/WebKit/WebKit.vcxproj/WebKitExportGenerator/WebKitExports.def.in	(revision 157054)
++++ Source/WebKit/WebKit.vcxproj/WebKitExportGenerator/WebKitExports.def.in	(working copy)
+@@ -181,7 +181,7 @@
+         symbolWithPointer(?addSlowCase@AtomicString@WTF@@CA?AV?$PassRefPtr@VStringImpl@WTF@@@2@PAVStringImpl@2@@Z, ?addSlowCase@AtomicString@WTF@@CA?AV?$PassRefPtr@VStringImpl@WTF@@@2@PEAVStringImpl@2@@Z)
+         symbolWithPointer(?cacheDOMStructure@WebCore@@YAPAVStructure@JSC@@PAVJSDOMGlobalObject@1@PAV23@PBUClassInfo@3@@Z, ?cacheDOMStructure@WebCore@@YAPEAVStructure@JSC@@PEAVJSDOMGlobalObject@1@PEAV23@PEBUClassInfo@3@@Z)
+         symbolWithPointer(?childItemWithTarget@HistoryItem@WebCore@@QBEPAV12@ABVString@WTF@@@Z, ?childItemWithTarget@HistoryItem@WebCore@@QEBAPEAV12@AEBVString@WTF@@@Z)
+-        ?create@Range@WebCore@@SA?AV?$PassRefPtr@VRange@WebCore@@@WTF@@AAVDocument@2@V?$PassRefPtr@VNode@WebCore@@@4@H1H@Z
++        symbolWithPointer(?create@Range@WebCore@@SA?AV?$PassRefPtr@VRange@WebCore@@@WTF@@AAVDocument@2@V?$PassRefPtr@VNode@WebCore@@@4@H1H@Z, ?create@Range@WebCore@@SA?AV?$PassRefPtr@VRange@WebCore@@@WTF@@AEAVDocument@2@V?$PassRefPtr@VNode@WebCore@@@4@H1H@Z)
+         symbolWithPointer(?create@SerializedScriptValue@WebCore@@SA?AV?$PassRefPtr@VSerializedScriptValue@WebCore@@@WTF@@ABVString@4@@Z, ?create@SerializedScriptValue@WebCore@@SA?AV?$PassRefPtr@VSerializedScriptValue@WebCore@@@WTF@@AEBVString@4@@Z)
+ #if USE(CF)
+         symbolWithPointer(?createCFString@String@WTF@@QBE?AV?$RetainPtr@PBU__CFString@@@2@XZ, ?createCFString@String@WTF@@QEBA?AV?$RetainPtr@PEBU__CFString@@@2@XZ)
+@@ -437,7 +437,7 @@
+         symbolWithPointer(?toInt64@WebCore@@YA_JPAVExecState@JSC@@VJSValue@3@W4IntegerConversionConfiguration@1@@Z, ?toInt64@WebCore@@YA_JPEAVExecState@JSC@@VJSValue@3@W4IntegerConversionConfiguration@1@@Z)
+         symbolWithPointer(?toUInt32EnforceRange@WebCore@@YAIPAVExecState@JSC@@VJSValue@3@@Z, ?toUInt32EnforceRange@WebCore@@YAIPEAVExecState@JSC@@VJSValue@3@@Z)
+         symbolWithPointer(?toUInt64@WebCore@@YA_KPAVExecState@JSC@@VJSValue@3@W4IntegerConversionConfiguration@1@@Z, ?toUInt64@WebCore@@YA_KPEAVExecState@JSC@@VJSValue@3@W4IntegerConversionConfiguration@1@@Z)
+-        ?commonVM@JSDOMWindowBase@WebCore@@SAPAVVM@JSC@@XZ
++        symbolWithPointer(?commonVM@JSDOMWindowBase@WebCore@@SAPAVVM@JSC@@XZ, ?commonVM@JSDOMWindowBase@WebCore@@SAPEAVVM@JSC@@XZ)
+ 
+ #if ENABLE(WORKERS)
+         ?workerThreadCount@WorkerThread@WebCore@@SAIXZ
+Index: Tools/WinLauncher/PrintWebUIDelegate.cpp
+===================================================================
+--- Tools/WinLauncher/PrintWebUIDelegate.cpp	(revision 157054)
++++ Tools/WinLauncher/PrintWebUIDelegate.cpp	(working copy)
+@@ -38,6 +38,18 @@
+ 
+ static const int MARGIN = 20;
+ 
++HRESULT STDMETHODCALLTYPE PrintWebUIDelegate::runJavaScriptAlertPanelWithMessage(IWebView*, BSTR message)
++{
++    MessageBoxW(0, message, L"JavaScript Alert", MB_OK);
++    return S_OK;
++}
++
++HRESULT STDMETHODCALLTYPE PrintWebUIDelegate::runJavaScriptConfirmPanelWithMessage(IWebView*, BSTR message, BOOL* result)
++{
++    *result = MessageBoxW(0, message, L"JavaScript Confirm", MB_OKCANCEL) == IDOK;
++    return S_OK;
++}
++
+ HRESULT STDMETHODCALLTYPE PrintWebUIDelegate::createWebViewWithRequest(IWebView*, IWebURLRequest* request, IWebView**)
+ {
+     if (!request)
+Index: Tools/WinLauncher/PrintWebUIDelegate.h
+===================================================================
+--- Tools/WinLauncher/PrintWebUIDelegate.h	(revision 157054)
++++ Tools/WinLauncher/PrintWebUIDelegate.h	(working copy)
+@@ -57,8 +57,8 @@
+     virtual HRESULT STDMETHODCALLTYPE webViewFrame(IWebView*, RECT*) { return E_NOTIMPL; }
+     virtual HRESULT STDMETHODCALLTYPE setContentRect(IWebView*, RECT*) { return E_NOTIMPL; }
+     virtual HRESULT STDMETHODCALLTYPE webViewContentRect(IWebView*, RECT*) { return E_NOTIMPL; }
+-    virtual HRESULT STDMETHODCALLTYPE runJavaScriptAlertPanelWithMessage(IWebView*, BSTR) { return E_NOTIMPL; }
+-    virtual HRESULT STDMETHODCALLTYPE runJavaScriptConfirmPanelWithMessage(IWebView*, BSTR, BOOL*) { return E_NOTIMPL; }
++    virtual HRESULT STDMETHODCALLTYPE runJavaScriptAlertPanelWithMessage(IWebView*, BSTR);
++    virtual HRESULT STDMETHODCALLTYPE runJavaScriptConfirmPanelWithMessage(IWebView*, BSTR, BOOL*);
+     virtual HRESULT STDMETHODCALLTYPE runJavaScriptTextInputPanelWithPrompt(IWebView*, BSTR, BSTR, BSTR*) { return E_NOTIMPL; }
+     virtual HRESULT STDMETHODCALLTYPE runBeforeUnloadConfirmPanelWithMessage(IWebView*, BSTR, IWebFrame*, BOOL*) { return E_NOTIMPL; }
+     virtual HRESULT STDMETHODCALLTYPE runOpenPanelForFileButtonWithResultListener(IWebView*, IWebOpenPanelResultListener*) { return E_NOTIMPL; }
+Index: Tools/WinLauncher/WinLauncher.cpp
+===================================================================
+--- Tools/WinLauncher/WinLauncher.cpp	(revision 157054)
++++ Tools/WinLauncher/WinLauncher.cpp	(working copy)
+@@ -418,7 +418,11 @@
+     if (FAILED(SHGetFolderPathW(0, CSIDL_LOCAL_APPDATA | CSIDL_FLAG_CREATE, 0, 0, appDataDirectory)))
+         return;
+ 
+-    std::wstring directory = std::wstring(appDataDirectory) + L"\\WinLauncher";
++    wchar_t executablePath[MAX_PATH];
++    ::GetModuleFileNameW( NULL, executablePath, MAX_PATH);
++    ::PathRemoveExtensionW(executablePath);
++
++    std::wstring directory = std::wstring(appDataDirectory) + L"\\" + PathFindFileNameW(executablePath);
+     if (::SHCreateDirectoryEx(0, directory.c_str(), 0) != ERROR_SUCCESS
+         && ::GetLastError() != ERROR_FILE_EXISTS
+         && ::GetLastError() != ERROR_ALREADY_EXISTS)
+Index: Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc
+===================================================================
+--- Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc	(revision 157054)
++++ Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.rc	(working copy)
+@@ -149,7 +149,7 @@
+ 
+ STRINGTABLE 
+ BEGIN
+-    IDS_APP_TITLE           "WinLauncher"
++    IDS_APP_TITLE           "Wink"
+     IDC_WINLAUNCHER         "WINLAUNCHER"
+ END
+ 
+Index: Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.vcxproj
+===================================================================
+--- Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.vcxproj	(revision 157054)
++++ Tools/WinLauncher/WinLauncher.vcxproj/WinLauncherLib.vcxproj	(working copy)
+@@ -173,8 +173,16 @@
+   <PropertyGroup>
+     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+   </PropertyGroup>
+-  <ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|Win32'">
++    <Link>
++      <AdditionalDependencies>Wininet.lib;CFLite.lib;%(AdditionalDependencies)</AdditionalDependencies>
++    </Link>
+   </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_WinCairo|x64'">
++    <Link>
++      <AdditionalDependencies>Wininet.lib;CFLite.lib;%(AdditionalDependencies)</AdditionalDependencies>
++    </Link>
++  </ItemDefinitionGroup>
+   <ItemGroup>
+     <None Include="small.ico" />
+     <None Include="WinLauncher.ico" />
+Index: Tools/WinLauncher/WinLauncherReplace.h
+===================================================================
+--- Tools/WinLauncher/WinLauncherReplace.h	(revision 157054)
++++ Tools/WinLauncher/WinLauncherReplace.h	(working copy)
+@@ -1,29 +1,53 @@
+-/*
+- * Copyright (C) 2013 Alex Christensen. All rights reserved.
+- * 
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions
+- * are met:
+- * 1.  Redistributions of source code must retain the above copyright
+- *     notice, this list of conditions and the following disclaimer.
+- * 2.  Redistributions in binary form must reproduce the above copyright
+- *     notice, this list of conditions and the following disclaimer in the
+- *     documentation and/or other materials provided with the distribution.
+- * 
+- * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS'' AND ANY
+- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+- * DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS BE LIABLE FOR ANY
+- * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+- * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+- */
++#include <WinInet.h>
+ 
+-// This file is to make it easier for users to manage changes to the internals of WinLauncher
++const wchar_t* defaultHTML = L"<div style=\"position:absolute;top:50%;left:50%;font-size:50;margin-top:-.5em\">;&nbsp;)<div>";
+ 
+-const wchar_t* defaultHTML = L"<p style=\"background-color: #00FF00\">Testing</p><img id=\"webkit logo\" src=\"http://webkit.org/images/icon-gold.png\" alt=\"Face\"><div style=\"border: solid blue; background: white;\" contenteditable=\"true\">div with blue border</div><ul><li>foo<li>bar<li>baz</ul>";
++void processCrashReport(const wchar_t* fileName)
++{
++	if (IDYES != ::MessageBoxW(0, L"We've crashed.  Could we upload a crash report to winkbrowser.org?  No personal or browsing information will be sent.  We just want to know where the program crashed so we know what to fix.", L"Upload Crash Report", MB_YESNO))
++		return;
+ 
+-void processCrashReport(const wchar_t* fileName) { ::MessageBox(0, fileName, L"Crash Report", MB_OK); }
++void processCrashReport(const wchar_t* fileName) { ::MessageBox(0, fileName, L"Crash Report", MB_OK); } // This change intentionally not included.  Please don't upload crash reports from other builds of Wink.
+Index: Tools/win/DLLLauncher/DLLLauncherMain.cpp
+===================================================================
+--- Tools/win/DLLLauncher/DLLLauncherMain.cpp	(revision 157054)
++++ Tools/win/DLLLauncher/DLLLauncherMain.cpp	(working copy)
+@@ -48,7 +48,7 @@
+ #endif
+ 
+ #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='" PROCESSORARCHITECTURE "' publicKeyToken='6595b64144ccf1df' language='*'\"")
+-#if defined(_MSC_VER) && (_MSC_VER >= 1600)
++#if defined(_MSC_VER) && (_MSC_VER >= 1600) && !defined(WIN_CAIRO)
+ #pragma comment(linker, "/manifestdependency:\"type='win32' name='Microsoft.VC80.CRT' version='8.0.50727.6195' processorArchitecture='" PROCESSORARCHITECTURE "' publicKeyToken='1fc8b3b9a1e18e3b' language='*'\"")
+ #endif
+ 
